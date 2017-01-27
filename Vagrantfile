@@ -7,7 +7,8 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "metasploitable3"
   config.vm.communicator = "winrm"
 
-  config.vm.network "private_network", type: "dhcp"
+  # ABr: specific network to use
+  config.vm.network "private_network", :ip => '10.0.3.97', :name => 'vboxnet1', :adapter => 2
 
   # Install Chocolatey
   config.vm.provision :shell, path: "scripts/installs/chocolatey.cmd"
